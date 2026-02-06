@@ -20,6 +20,19 @@ This repository contains an end-to-end customer shopping behavior analysis pipel
 - Hands-on examples for analysts learning Python (pandas), SQL, and database connectivity.
 
 **Getting started (quick)**
+**High-level project workflow**
+1. Business problem & objectives — define the questions the analysis must answer.
+2. Python: Data import, cleaning & EDA — import the CSV, clean data, and perform exploratory analysis (single Python phase).
+3. Load cleaned data into a SQL database — create a database/table and write the cleaned DataFrame using the notebook's examples.
+4. SQL analysis — run analytical queries against the database to prepare tables and aggregate results for reporting and dashboarding.
+5. Power BI: Interactive dashboard — build visuals using SQL views / aggregated tables as the data source.
+6. Insights & project report — summarize findings and business recommendations.
+7. Presentation to stakeholders — present insights; tool choices (Gamma, PowerPoint, etc.) are optional.
+
+**Repository & deliverables (final/parallel)**
+ - Publish code, SQL, dashboard files, report and presentation to the GitHub repository as the final deliverable (this is a parallel/final step, not one of the sequential analysis phases).
+
+**Getting started (quick)**
 1. Clone the repository and open the notebook:
 
 ```bash
@@ -39,18 +52,18 @@ pip install -r requirements.txt  # if provided
 
 Minimal packages used in the notebook: pandas, sqlalchemy, and a DB driver such as `psycopg2-binary` / `pymysql` / `pyodbc`.
 
-3. Open and run the notebook: [Customer_Shopping_Behavior_Analysis.ipynb](Customer_Shopping_Behavior_Analysis.ipynb). The notebook includes:
-- Data preview and summary statistics
-- Missing-value handling and column renaming
-- Feature creation (age groups, purchase frequency mapping)
-- Examples to write the cleaned DataFrame to PostgreSQL / MySQL / SQL Server
+3. Open and run the notebook: [Customer_Shopping_Behavior_Analysis.ipynb](Customer_Shopping_Behavior_Analysis.ipynb). The notebook's Python phase combines:
+ - Importing the raw CSV
+ - Data cleaning and imputation
+ - Column renaming and basic feature engineering (age groups, purchase frequency mapping)
+ - Light EDA (summary statistics, null checks, sample visualizations)
+ - Code examples to write the cleaned DataFrame into a SQL database (PostgreSQL / MySQL / SQL Server) — use this to perform the explicit "Load cleaned data into SQL" step.
 
-4. Explore SQL queries in [customer_behavior_sql_queries.sql](customer_behavior_sql_queries.sql) to answer business questions. These queries assume a `customer` table with columns matching the CSV headers after the notebook's renaming steps.
+4. Use [customer_behavior_sql_queries.sql](customer_behavior_sql_queries.sql) as the SQL analysis phase. These queries expect a `customer` table with columns matching the cleaned dataset produced by the notebook.
 
-Suggested analysis flow:
-- Run the notebook cells to clean and inspect the data.
-- Use the notebook's database connection examples to load data into your DB.
-- Run or adapt the SQL queries to produce summary tables for your Power BI dashboard.
+5. Build the Power BI dashboard using the aggregated SQL outputs or exported CSVs created in step 4.
+
+6. Produce the written report (Insights & Project Report) and prepare the stakeholder presentation. Tool names such as Gamma AI are optional and not required for recruiters or standard presentations.
 
 **Files & purpose**
 - [customer_shopping_behavior.csv](customer_shopping_behavior.csv): raw dataset (preview included in the notebook).
